@@ -1,4 +1,5 @@
 local ts = game:GetService("TweenService")
+local uis = game:GetService("UserInputService")
 
 local library = {}
 
@@ -13,6 +14,7 @@ function library:Create()
 	shayzenSxz.Name = "shayzenSxz"
 	shayzenSxz.Parent = (game:GetService("CoreGui") or gethui())
 	shayzenSxz.ResetOnSpawn = false
+	shayzenSxz.Enabled = false
 
 	ClickGui.Name = "ClickGui"
 	ClickGui.Parent = shayzenSxz
@@ -20,7 +22,7 @@ function library:Create()
 	ClickGui.BackgroundTransparency = 0.600
 	ClickGui.BorderSizePixel = 0
 	ClickGui.Position = UDim2.new(0, 0, -0.0891238675, 0)
-	ClickGui.Size = UDim2.new(0, 1343, 0, 779)
+	ClickGui.Size = UDim2.new(1, 0,1.177, 0)
 
 	Tabs.Name = "Tabs"
 	Tabs.Parent = ClickGui
@@ -50,6 +52,12 @@ function library:Create()
 
 	UIGradient_6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(56, 41, 108))}
 	UIGradient_6.Parent = ClickGui
+	
+	uis.InputBegan:Connect(function(key)
+		if key.KeyCode == Enum.KeyCode.RightControl then
+			shayzenSxz.Enabled = not shayzenSxz.Enabled;
+		end
+	end)
 	
 	local main_objects = {}
 	
@@ -328,5 +336,17 @@ function library:Create()
 	
 	return main_objects;
 end
+
+--[[
+local clickGui = library:Create()
+local page1 = clickGui:CreatePage("Combat")
+
+local killaura = page1:CreateButton("Killaura",function(x)
+	print(x)
+end)
+killaura:CreateToggle("Client rotation",function(x)
+	print(x)
+end)
+]]
 
 return library;
