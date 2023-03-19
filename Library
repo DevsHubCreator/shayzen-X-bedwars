@@ -11,7 +11,7 @@ function library:Create()
 	local UIGradient_6 = Instance.new("UIGradient")
 	
 	shayzenSxz.Name = "shayzenSxz"
-	shayzenSxz.Parent = game.Players.LocalPlayer.PlayerGui --(game:GetService("CoreGui") or gethui())
+	shayzenSxz.Parent = (game:GetService("CoreGui") or gethui())
 	shayzenSxz.ResetOnSpawn = false
 
 	ClickGui.Name = "ClickGui"
