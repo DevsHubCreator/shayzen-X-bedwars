@@ -358,6 +358,216 @@ function library:Create()
 			
 			return Settings;
 		end
+		
+		function objects:CreateSpecial(name, special, callback)
+			callback = callback or function() end
+			name = name or "SpecailToggle"
+
+			if tostring(special) == "TargetHud" then
+				local TargetHUD = Instance.new("Frame")
+				local UIStroke = Instance.new("UIStroke")
+				local UIGradient = Instance.new("UIGradient")
+				local Glow = Instance.new("ImageLabel")
+				local UIGradient_2 = Instance.new("UIGradient")
+				local Name = Instance.new("TextLabel")
+				local Health = Instance.new("TextLabel")
+				local UICorner = Instance.new("UICorner")
+				local Line = Instance.new("Frame")
+				local UIGradient_3 = Instance.new("UIGradient")
+				local UICorner_2 = Instance.new("UICorner")
+				local LineBG = Instance.new("Frame")
+				local UICorner_3 = Instance.new("UICorner")
+				local Glow_2 = Instance.new("ImageLabel")
+				local UIGradient_4 = Instance.new("UIGradient")
+				local Head = Instance.new("ImageLabel")
+				local UICorner_4 = Instance.new("UICorner")
+				local UIGradient_5 = Instance.new("UIGradient")
+				
+				TargetHUD.Name = "TargetHUD"
+				TargetHUD.Parent = shayzenSxz
+				TargetHUD.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TargetHUD.Position = UDim2.new(0.413672745, 0, 0.776699185, 0)
+				TargetHUD.Size = UDim2.new(0, 231, 0, 79)
+				TargetHUD.Active = true
+				TargetHUD.Draggable = true
+				TargetHUD.Visible = false
+
+				UIStroke.Color = Color3.fromRGB(248, 248, 248)
+				UIStroke.Thickness = 2.700
+				UIStroke.Parent = TargetHUD
+
+				UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(239, 231, 248)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(184, 145, 251)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(144, 86, 253)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(104, 24, 255))}
+				UIGradient.Parent = UIStroke
+
+				Glow.Name = "Glow"
+				Glow.Parent = TargetHUD
+				Glow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Glow.BackgroundTransparency = 1.000
+				Glow.Position = UDim2.new(-0.256197035, 0, -0.509225965, 0)
+				Glow.Size = UDim2.new(0, 349, 0, 159)
+				Glow.ZIndex = -5
+				Glow.Image = "rbxassetid://12822896774"
+				Glow.ImageTransparency = 0.560
+
+				UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(239, 231, 248)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(184, 145, 251)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(144, 86, 253)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(104, 24, 255))}
+				UIGradient_2.Parent = Glow
+
+				Name.Name = "Name"
+				Name.Parent = TargetHUD
+				Name.BackgroundColor3 = Color3.fromRGB(162, 162, 162)
+				Name.BackgroundTransparency = 1.000
+				Name.Position = UDim2.new(0.320253134, 0, 0.101265907, 0)
+				Name.Size = UDim2.new(0, 153, 0, 38)
+				Name.ZIndex = 2
+				Name.Font = Enum.Font.GothamBold
+				Name.Text = "..."
+				Name.TextColor3 = Color3.fromRGB(231, 231, 231)
+				Name.TextSize = 18.000
+				Name.TextWrapped = true
+
+				Health.Name = "Health"
+				Health.Parent = TargetHUD
+				Health.BackgroundColor3 = Color3.fromRGB(162, 162, 162)
+				Health.BackgroundTransparency = 1.000
+				Health.Position = UDim2.new(0.337569356, 0, 0.677131355, 0)
+				Health.Size = UDim2.new(0, 145, 0, 12)
+				Health.ZIndex = 3
+				Health.Font = Enum.Font.GothamBold
+				Health.Text = "100"
+				Health.TextColor3 = Color3.fromRGB(231, 231, 231)
+				Health.TextSize = 15.000
+				Health.TextWrapped = true
+
+				UICorner.CornerRadius = UDim.new(0, 6)
+				UICorner.Parent = TargetHUD
+
+				Line.Name = "Line"
+				Line.Parent = TargetHUD
+				Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Line.BorderSizePixel = 0
+				Line.Position = UDim2.new(0.337569356, 0, 0.677131355, 0)
+				Line.Size = UDim2.new(0, 145, 0, 12)
+				Line.ZIndex = 2
+
+				UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(239, 231, 248)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(184, 145, 251)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(144, 86, 253)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(104, 24, 255))}
+				UIGradient_3.Parent = Line
+
+				UICorner_2.Parent = Line
+
+				LineBG.Name = "LineBG"
+				LineBG.Parent = TargetHUD
+				LineBG.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+				LineBG.BorderSizePixel = 0
+				LineBG.Position = UDim2.new(0.337569118, 0, 0.677131355, 0)
+				LineBG.Size = UDim2.new(0, 144, 0, 12)
+
+				UICorner_3.Parent = LineBG
+
+				Glow_2.Name = "Glow"
+				Glow_2.Parent = TargetHUD
+				Glow_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Glow_2.BackgroundTransparency = 1.000
+				Glow_2.Position = UDim2.new(0.264069319, 0, 0.490773618, 0)
+				Glow_2.Size = UDim2.new(0, 178, 0, 40)
+				Glow_2.Image = "rbxassetid://12822896774"
+				Glow_2.ImageTransparency = 0.560
+
+				UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(239, 231, 248)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(184, 145, 251)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(144, 86, 253)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(104, 24, 255))}
+				UIGradient_4.Parent = Glow_2
+
+				Head.Name = "Head"
+				Head.Parent = TargetHUD
+				Head.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Head.BackgroundTransparency = 1.000
+				Head.Position = UDim2.new(0.0381752327, 0, 0.101265669, 0)
+				Head.Size = UDim2.new(0, 60, 0, 62)
+				Head.Image = "rbxassetid://6228441155"
+
+				UICorner_4.CornerRadius = UDim.new(0, 10)
+				UICorner_4.Parent = Head
+
+				UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(116, 116, 232))}
+				UIGradient_5.Parent = TargetHUD
+				
+				spawn(function()
+					while task.wait() do
+						if UIGradient.Rotation < 360 then
+							UIGradient.Rotation = UIGradient.Rotation + 0.65
+						else
+							UIGradient.Rotation = 2
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait() do
+						if UIGradient_2.Rotation < 360 then
+							UIGradient_2.Rotation = UIGradient_2.Rotation + 0.65
+						else
+							UIGradient_2.Rotation = 2
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait() do
+						if UIGradient_3.Rotation < 360 then
+							UIGradient_3.Rotation = UIGradient_3.Rotation + 0.65
+						else
+							UIGradient_3.Rotation = 2
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait() do
+						if UIGradient_4.Rotation < 360 then
+							UIGradient_4.Rotation = UIGradient_4.Rotation + 0.65
+						else
+							UIGradient_4.Rotation = 2
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait() do
+						if UIGradient_5.Rotation < 360 then
+							UIGradient_5.Rotation = UIGradient_5.Rotation + 0.65
+						else
+							UIGradient_5.Rotation = 2
+						end
+					end
+				end)
+				spawn(function()
+					while task.wait() do
+						if UIGradient_6.Rotation < 360 then
+							UIGradient_6.Rotation = UIGradient_6.Rotation + 0.65
+						else
+							UIGradient_6.Rotation = 2
+						end
+					end
+				end)
+				
+				local options = {}
+				
+				function options:ChangeProprs(name, visible, health)
+					name = name or "...";
+					visible = visible or true
+					health = math.round(health) or 100
+					
+					TargetHUD.Visible = visible;
+					Name.Text = tostring(name)
+					Health.Text = tostring(health)
+
+					if (health < 10) then
+						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
+						ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
+					elseif (health > 10) then
+						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
+						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health + 50, 0, 12)}):Play()
+					end
+				end
+				
+				return options;
+			end
+		end
+		
 		return objects;
 	end
 	
