@@ -12,7 +12,7 @@ function library:Create()
 	local UIGradient_6 = Instance.new("UIGradient")
 	
 	shayzenSxz.Name = "shayzenSxz"
-	shayzenSxz.Parent = game.Players.LocalPlayer.PlayerGui --(game:GetService("CoreGui") or gethui())
+	shayzenSxz.Parent = (game:GetService("CoreGui") or gethui())
 	shayzenSxz.ResetOnSpawn = false
 
 	ClickGui.Name = "ClickGui"
@@ -509,15 +509,6 @@ function library:Create()
 				end)
 				spawn(function()
 					while task.wait() do
-						if UIGradient_3.Rotation < 360 then
-							UIGradient_3.Rotation = UIGradient_3.Rotation + 0.65
-						else
-							UIGradient_3.Rotation = 2
-						end
-					end
-				end)
-				spawn(function()
-					while task.wait() do
 						if UIGradient_4.Rotation < 360 then
 							UIGradient_4.Rotation = UIGradient_4.Rotation + 0.65
 						else
@@ -546,21 +537,23 @@ function library:Create()
 				
 				local options = {}
 				
-				function options:ChangeProprs(name, visible, health)
+				function options:ChangeProprs(name, sync, health)
 					name = name or "...";
-					visible = visible or true
 					health = math.round(health) or 100
 					
-					TargetHUD.Visible = visible;
-					Name.Text = tostring(name)
-					Health.Text = tostring(health)
+					TargetHUD.Visible = sync;
+					
+					if sync then
+						Name.Text = tostring(name)
+						Health.Text = tostring(health)
 
-					if (health < 10) then
-						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
-						ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
-					elseif (health > 10) then
-						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
-						ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health + 50, 0, 12)}):Play()
+						if (health < 10) then
+							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
+							ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
+						elseif (health > 10) then
+							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
+							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health + 50, 0, 12)}):Play()
+						end
 					end
 				end
 				
