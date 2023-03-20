@@ -537,9 +537,10 @@ function library:Create()
 				
 				local options = {}
 				
-				function options:ChangeProprs(name, sync, health)
+				function options:ChangeProprs(name, sync, health, maxHealth)
 					name = name or "...";
 					health = math.round(health) or 100
+					maxHealth = math.round(maxHealth) or 100
 					
 					TargetHUD.Visible = sync;
 					
@@ -547,12 +548,12 @@ function library:Create()
 						Name.Text = tostring(name)
 						Health.Text = tostring(health)
 
-						if (health < 10) then
+						if (health < 1) then
 							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
 							ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
-						elseif (health > 10) then
+						elseif (health > 1) then
 							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
-							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health + 50, 0, 12)}):Play()
+							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health / maxHealth, 0, 12)}):Play()
 						end
 					end
 				end
@@ -688,7 +689,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-
+3
 ]]
 
 
