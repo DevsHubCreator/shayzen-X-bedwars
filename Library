@@ -291,18 +291,22 @@ function library:Create()
 				if input.UserInputType == Enum.UserInputType.MouseButton3 then
 					if onButton then
 						waitingKey = true;
+						print("M3")
 					end
 				elseif input.KeyCode == Enum.KeyCode.KeypadEnter then
 					if waitingKey then
 						waitingKey = false;
+						print("key changed")
 					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
 					if waitingKey then
 						keybind = input.KeyCode
+						print("key choosed")
 					end
 				elseif input.KeyCode == Enum.KeyCode.Escape then
 					if waitingKey then
 						keybind = "none"
+						print("key deleted")
 					end
 				elseif input.KeyCode == keybind then
 					toggle_enabled = not toggle_enabled;
@@ -727,7 +731,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-54
+
 ]]
 
 
