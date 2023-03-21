@@ -293,12 +293,16 @@ function library:Create()
 						waitingKey = true;
 						print("M3")
 					end
-				elseif input.KeyCode == Enum.KeyCode.Space then
-					if waitingKey then
-						waitingKey = false;
-						print("key changed")
-					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
+					
+					if input.KeyCode == Enum.KeyCode.Backspace then
+						if waitingKey then
+							keybind = "none"
+							print("key deleted")
+						end
+					end
+					
+					task.wait()
 					
 					if keybind ~= "none" then
 						if input.KeyCode == Enum.KeyCode[keybind] then
@@ -310,15 +314,16 @@ function library:Create()
 						end
 					end
 					
-					task.wait()
 					if waitingKey then
-						keybind = input.KeyCode
+						keybind = uis:GetStringForKeyCode(input.KeyCode)
 						print("key choosed")
 					end
-				elseif input.KeyCode == Enum.KeyCode.Backspace then
-					if waitingKey then
-						keybind = "none"
-						print("key deleted")
+					
+					if input.KeyCode == Enum.KeyCode.Space then
+						if waitingKey then
+							waitingKey = false;
+							print("key changed")
+						end
 					end
 				end
 			end)
