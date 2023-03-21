@@ -202,6 +202,10 @@ function library:Create()
 			callback = callback or function() end
 			name = tostring(name) or "Button"
 			
+			local keybind = "none";
+			local onButton = false;
+			local waitingKey = false;
+			
 			local ClickButton = Instance.new("TextButton")
 			local TextLabel = Instance.new("TextLabel")
 
@@ -272,6 +276,39 @@ function library:Create()
 					if v:IsA("GuiObject") then
 						v.Visible = dropdown_open
 					end
+				end
+			end)
+			
+			ClickButton.MouseEnter:Connect(function()
+				onButton = true;
+			end)
+			ClickButton.MouseLeave:Connect(function()
+				onButton = false;
+			end)
+			
+			uis.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton3 then
+					if onButton then
+						waitingKey = true;
+					end
+				elseif input.KeyCode == Enum.KeyCode.KeypadEnter then
+					if waitingKey then
+						waitingKey = false;
+					end
+				elseif input.UserInputType == Enum.UserInputType.Keyboard then
+					if waitingKey then
+						keybind = input.KeyCode
+					end
+				elseif input.KeyCode == Enum.KeyCode.Escape then
+					if waitingKey then
+						keybind = "none"
+					end
+				elseif input.KeyCode == keybind then
+					toggle_enabled = not toggle_enabled;
+					local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
+
+					ts:Create(TextLabel, TweenInfo.new(.3), {TextColor3 = text_color}):Play()
+					callback(toggle_enabled)
 				end
 			end)
 			
@@ -689,7 +726,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-3
+
 ]]
 
 
