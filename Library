@@ -281,6 +281,7 @@ function library:Create()
 			
 			ClickButton.MouseEnter:Connect(function()
 				onButton = true;
+				print("k")
 			end)
 			ClickButton.MouseLeave:Connect(function()
 				onButton = false;
@@ -726,7 +727,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-
+54
 ]]
 
 
