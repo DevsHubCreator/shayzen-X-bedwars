@@ -314,18 +314,18 @@ function library:Create()
 						end
 					end
 					
-					if waitingKey then
-						keybind = (typeof(input.KeyCode) == "EnumItem")
-						print("key choosed")
-					end
-					
-					if input.KeyCode == Enum.KeyCode.Space then
+					if input.KeyCode == Enum.KeyCode.Return then
 						if waitingKey then
 							waitingKey = false;
 							print("key changed")
-							
+
 							TextLabel.Text = name
 						end
+					end
+					
+					if waitingKey then
+						keybind = input.KeyCode
+						print("key choosed")
 					end
 				end
 			end)
@@ -744,7 +744,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-5263
+
 ]]
 
 
