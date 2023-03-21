@@ -281,7 +281,6 @@ function library:Create()
 			
 			ClickButton.MouseEnter:Connect(function()
 				onButton = true;
-				print("k")
 			end)
 			ClickButton.MouseLeave:Connect(function()
 				onButton = false;
@@ -291,21 +290,22 @@ function library:Create()
 				if input.UserInputType == Enum.UserInputType.MouseButton3 then
 					if onButton then
 						waitingKey = true;
-						print("M3")
+						TextLabel.Text = "Waiting for key"
 					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
 					
 					if input.KeyCode == Enum.KeyCode.Backspace then
 						if waitingKey then
 							keybind = "none"
+							waitingKey = false;
+							
+							TextLabel.Text = name
 							print("key deleted")
 						end
 					end
 					
-					task.wait()
-					
-					if keybind ~= "none" then
-						if input.KeyCode == Enum.KeyCode[keybind] then
+					if keybind ~= "none" and not waitingKey then
+						if input.KeyCode == keybind then
 							toggle_enabled = not toggle_enabled;
 							local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
 
@@ -315,7 +315,7 @@ function library:Create()
 					end
 					
 					if waitingKey then
-						keybind = uis:GetStringForKeyCode(input.KeyCode)
+						keybind = (typeof(input.KeyCode) == "EnumItem")
 						print("key choosed")
 					end
 					
@@ -323,6 +323,8 @@ function library:Create()
 						if waitingKey then
 							waitingKey = false;
 							print("key changed")
+							
+							TextLabel.Text = name
 						end
 					end
 				end
@@ -742,7 +744,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-
+5263
 ]]
 
 
