@@ -293,12 +293,13 @@ function library:Create()
 						waitingKey = true;
 						print("M3")
 					end
-				elseif input.KeyCode == Enum.KeyCode.KeypadEnter then
+				elseif input.KeyCode == Enum.KeyCode.Space then
 					if waitingKey then
 						waitingKey = false;
 						print("key changed")
 					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
+					task.wait()
 					if waitingKey then
 						keybind = input.KeyCode
 						print("key choosed")
@@ -731,7 +732,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-
+45
 ]]
 
 
