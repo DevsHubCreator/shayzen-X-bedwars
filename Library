@@ -98,7 +98,7 @@ function library:Create()
 		local List = Instance.new("ScrollingFrame")
 		local TextLabel_3 = Instance.new("TextLabel")
 		local UIGradient_4 = Instance.new("UIGradient")
-		local Frame = Instance.new("Frame")
+		local Frame_2 = Instance.new("Frame")
 		local Hider = Instance.new("Frame")
 		local UIGradient_5 = Instance.new("UIGradient")
 		local UIListLayout = Instance.new("UIListLayout")
@@ -151,7 +151,7 @@ function library:Create()
 		List.BackgroundTransparency = 1.000
 		List.BorderSizePixel = 0
 		List.Position = UDim2.new(0, 0, 0.046, 0)
-		List.Size = UDim2.new(0, 200, 0, 484)
+		List.Size = UDim2.new(0.997875869, 0, 0.950884163, 0)
 		List.ScrollBarThickness = 0
 		
 		TextLabel_3.Parent = Tab
@@ -172,13 +172,13 @@ function library:Create()
 		UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(56, 41, 108))}
 		UIGradient_4.Parent = Tab
 
-		Frame.Parent = Tab
-		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Frame.BackgroundTransparency = 0.500
-		Frame.BorderSizePixel = 0
-		Frame.Position = UDim2.new(0, 0, 0.848999977, 0)
-		Frame.Size = UDim2.new(1.00286531, 0, 0.025641026, 0)
-		Frame.ZIndex = 3
+		Frame_2.Parent = Tab
+		Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame_2.BackgroundTransparency = 0.500
+		Frame_2.BorderSizePixel = 0
+		Frame_2.Position = UDim2.new(0, 0, 0.848999977, 0)
+		Frame_2.Size = UDim2.new(1.00286531, 0, 0.025641026, 0)
+		Frame_2.ZIndex = 3
 
 		Hider.Name = "Hider"
 		Hider.Parent = Tab
@@ -310,37 +310,38 @@ function library:Create()
 				onButton = false;
 			end)
 			
-			uis.InputBegan:Connect(function(input)
+			uis.InputBegan:Connect(function(input,display)
 				if input.UserInputType == Enum.UserInputType.MouseButton3 then
-					if onButton then
+					if onButton and not display then
 						waitingKey = true;
 						TextLabel.Text = "Waiting for key"
 					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
-					
-					if input.KeyCode == Enum.KeyCode.Backspace then
+					if not display then
+						if input.KeyCode == Enum.KeyCode.Backspace then
+							if waitingKey then
+								keybind = "none"
+								waitingKey = false;
+
+								TextLabel.Text = name
+							end
+						end
+
+						if keybind ~= "none" and not waitingKey then
+							if input.KeyCode == keybind then
+								toggle_enabled = not toggle_enabled;
+								local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
+
+								ts:Create(TextLabel, TweenInfo.new(.3), {TextColor3 = text_color}):Play()
+								callback(toggle_enabled)
+							end
+						end
+
 						if waitingKey then
-							keybind = "none"
+							keybind = input.KeyCode
 							waitingKey = false;
-							
 							TextLabel.Text = name
 						end
-					end
-					
-					if keybind ~= "none" and not waitingKey then
-						if input.KeyCode == keybind then
-							toggle_enabled = not toggle_enabled;
-							local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
-
-							ts:Create(TextLabel, TweenInfo.new(.3), {TextColor3 = text_color}):Play()
-							callback(toggle_enabled)
-						end
-					end
-					
-					if waitingKey then
-						keybind = input.KeyCode
-						waitingKey = false;
-						TextLabel.Text = name
 					end
 				end
 			end)
@@ -553,13 +554,13 @@ function library:Create()
 				Dropdown.MouseButton1Click:Connect(function()
 					dropdown_db = not dropdown_db;
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
-					ts:Create(Table, TweenInfo.new(.2), {Size = isSize})
+					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 				end)
 				
 				Dropdown.MouseButton2Click:Connect(function()
 					dropdown_db = not dropdown_db;
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
-					ts:Create(Table, TweenInfo.new(.2), {Size = isSize})
+					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 				end)
 			end
 			
@@ -895,7 +896,7 @@ local killaura = page1:CreateButton("Killaura",function(x)
 end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
-end)
+end)453
 
 ]]
 
