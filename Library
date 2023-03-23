@@ -456,6 +456,7 @@ function library:Create()
 				Dropdown.Text = ""
 				Dropdown.TextColor3 = Color3.fromRGB(0, 0, 0)
 				Dropdown.TextSize = 14.000
+				Dropdown.Visible = false
 
 				TextLabel.Parent = Dropdown
 				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -560,6 +561,10 @@ function library:Create()
 					Table.Visible = dropdown_db
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
+					
+					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and 0
+
+					ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
 				end)
 				
 				Dropdown.MouseButton2Click:Connect(function()
@@ -567,6 +572,10 @@ function library:Create()
 					Table.Visible = dropdown_db
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
+					
+					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and 0
+
+					ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
 				end)
 			end
 			
@@ -903,7 +912,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-
+10/10
 ]]
 
 
