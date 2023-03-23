@@ -98,7 +98,7 @@ function library:Create()
 		local List = Instance.new("ScrollingFrame")
 		local TextLabel_3 = Instance.new("TextLabel")
 		local UIGradient_4 = Instance.new("UIGradient")
-		local Frame_2 = Instance.new("Frame")
+		local Frame4562 = Instance.new("Frame")
 		local Hider = Instance.new("Frame")
 		local UIGradient_5 = Instance.new("UIGradient")
 		local UIListLayout = Instance.new("UIListLayout")
@@ -172,13 +172,13 @@ function library:Create()
 		UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(56, 41, 108))}
 		UIGradient_4.Parent = Tab
 
-		Frame_2.Parent = Tab
-		Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Frame_2.BackgroundTransparency = 0.500
-		Frame_2.BorderSizePixel = 0
-		Frame_2.Position = UDim2.new(0, 0, 0.848999977, 0)
-		Frame_2.Size = UDim2.new(1.00286531, 0, 0.025641026, 0)
-		Frame_2.ZIndex = 3
+		Frame4562.Parent = Tab
+		Frame4562.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame4562.BackgroundTransparency = 0.500
+		Frame4562.BorderSizePixel = 0
+		Frame4562.Position = UDim2.new(0, 0, 0.848999977, 0)
+		Frame4562.Size = UDim2.new(1.00286531, 0, 0.025641026, 0)
+		Frame4562.ZIndex = 3
 
 		Hider.Name = "Hider"
 		Hider.Parent = Tab
@@ -270,7 +270,7 @@ function library:Create()
 			Frame.BackgroundColor3 = Color3.fromRGB(202, 202, 202)
 			Frame.BorderSizePixel = 0
 			Frame.Position = UDim2.new(0.00131780456, 0, 1, 0)
-			Frame.Size = UDim2.new(0, 220, 0, 252)
+			Frame.Size = UDim2.new(0, 220, 0, 0)
 			Frame.ZIndex = 4
 
 			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(56, 41, 108))}
@@ -292,6 +292,7 @@ function library:Create()
 			
 			ClickButton.MouseButton2Click:Connect(function()
 				dropdown_open = not dropdown_open;
+				Frame.Visible = dropdown_open;
 				local dropdown_size = dropdown_open and dropYsize or not dropdown_open and 0
 				
 				ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
@@ -429,6 +430,8 @@ function library:Create()
 			
 			function Settings:CreateDropdown(name,list,callback)
 				local dropdownYsize = 0;
+				
+				dropYsize += 27;
 				
 				name = name or "Dropdown";
 				list = list or {};
@@ -899,7 +902,7 @@ local killaura = page1:CreateButton("Killaura",function(x)
 end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
-end)53
+end)
 
 ]]
 
