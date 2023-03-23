@@ -68,7 +68,7 @@ function library:Create()
 				
 				ClickGui.Transparency = 1;
 				
-				ts:Create(ClickGui, TweenInfo.new(.4), {Transparency = .6}):Play()
+				ts:Create(ClickGui, TweenInfo.new(.4), {Transparency = .4}):Play()
 				ts:Create(Tabs, TweenInfo.new(.4), {Position = UDim2.new(0.016, 0, 0.169, 0)}):Play()
 			else
 				ts:Create(Tabs, TweenInfo.new(.2), {Position = UDim2.new(0.016, 0, 1.2, 0)}):Play()
@@ -769,10 +769,10 @@ function library:Create()
 						Name.Text = tostring(name)
 						Health.Text = tostring(health)
 
-						if (health < 1) then
+						if health < 5 then
 							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
 							ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
-						elseif (health > 1) then
+						else
 							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
 							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health / maxHealth, 0, 12)}):Play()
 						end
@@ -787,73 +787,21 @@ function library:Create()
 	end
 	
 	function main_objects:CreateWatermark(name,build)
-		local Watermark = Instance.new("Frame")
-		local UICorner = Instance.new("UICorner")
-		local UIStroke = Instance.new("UIStroke")
+		local Watermark = Instance.new("ImageLabel")
 		local UIGradient = Instance.new("UIGradient")
-		local Glow = Instance.new("ImageLabel")
-		local UIGradient_2 = Instance.new("UIGradient")
-		local text = Instance.new("TextLabel")
-		local Shadow = Instance.new("ImageLabel")
-		local UICorner_2 = Instance.new("UICorner")
-		local UIGradient_3 = Instance.new("UIGradient")
 		
 		Watermark.Name = "Watermark"
 		Watermark.Parent = shayzenSxz
 		Watermark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Watermark.Position = UDim2.new(0.0140000004, 0, 0.0219999999, 0)
-		Watermark.Size = UDim2.new(0, 195, 0, 34)
+		Watermark.BackgroundTransparency = 1.000
+		Watermark.BorderSizePixel = 0
+		Watermark.Position = UDim2.new(-0.00670645386, 0, -0.1, 0)
+		Watermark.Size = UDim2.new(0, 150, 0, 150)
+		Watermark.ZIndex = 5
+		Watermark.Image = "rbxassetid://12875164700"
 
-		UICorner.CornerRadius = UDim.new(0, 6)
-		UICorner.Parent = Watermark
-
-		UIStroke.Color = Color3.fromRGB(200, 200, 200)
-		UIStroke.Thickness = 2.700
-		UIStroke.Transparency = 0.250
-		UIStroke.Parent = Watermark
-
-		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(116, 116, 232))}
-		UIGradient.Parent = UIStroke
-
-		Glow.Name = "Glow"
-		Glow.Parent = Watermark
-		Glow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Glow.BackgroundTransparency = 1.000
-		Glow.Position = UDim2.new(-0.108533382, 0, -0.470588237, 0)
-		Glow.Size = UDim2.new(0, 236, 0, 66)
-		Glow.ZIndex = 0
-		Glow.Image = "rbxassetid://12822896774"
-		Glow.ImageTransparency = 0.110
-
-		UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(149, 157, 213)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(119, 134, 195)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(123, 138, 203)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(116, 131, 247))}
-		UIGradient_2.Parent = Glow
-
-		text.Name = "text"
-		text.Parent = Watermark
-		text.BackgroundColor3 = Color3.fromRGB(162, 162, 162)
-		text.BackgroundTransparency = 1.000
-		text.Size = UDim2.new(0, 195, 0, 34)
-		text.ZIndex = 2
-		text.Font = Enum.Font.GothamBold
-		text.Text =  tostring(name.." | alpha | "..build);
-		text.TextColor3 = Color3.fromRGB(231, 231, 231)
-		text.TextSize = 15.000
-		text.TextWrapped = true
-
-		Shadow.Name = "Shadow"
-		Shadow.Parent = Watermark
-		Shadow.Active = true
-		Shadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Shadow.BackgroundTransparency = 1.000
-		Shadow.Size = UDim2.new(0, 194, 0, 34)
-		Shadow.Image = "rbxassetid://4576475446"
-		Shadow.ImageTransparency = 0.850
-
-		UICorner_2.CornerRadius = UDim.new(0, 6)
-		UICorner_2.Parent = Shadow
-
-		UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(116, 116, 232))}
-		UIGradient_3.Parent = Watermark
+		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(61, 78, 232))}
+		UIGradient.Parent = Watermark
 		
 		spawn(function()
 			while task.wait() do
@@ -861,24 +809,6 @@ function library:Create()
 					UIGradient.Rotation = UIGradient.Rotation +  0.60
 				else
 					UIGradient.Rotation = 2
-				end
-			end
-		end)
-		spawn(function()
-			while task.wait() do
-				if UIGradient_2.Rotation < 360 then
-					UIGradient_2.Rotation = UIGradient_2.Rotation +  0.60
-				else
-					UIGradient_2.Rotation = 2
-				end
-			end
-		end)
-		spawn(function()
-			while task.wait() do
-				if UIGradient_3.Rotation < 360 then
-					UIGradient_3.Rotation = UIGradient_3.Rotation +  0.60
-				else
-					UIGradient_3.Rotation = 2
 				end
 			end
 		end)
@@ -890,8 +820,7 @@ function library:Create()
 		Watermark["text"].TextTransparency = 1
 
 		wait(0.5)
-		ts:Create(text, TweenInfo.new(0.10, Enum.EasingStyle.Quad), {TextTransparency = 0}):Play()
-		ts:Create(Watermark, TweenInfo.new(1.25, Enum.EasingStyle.Quad), {Position = UDim2.new(0.0140000004, 0, 0.0219999999, 0)}):Play()
+		ts:Create(Watermark, TweenInfo.new(1.25, Enum.EasingStyle.Quad), {Position = UDim2.new(-0.00670645386, 0, -0.0649546683, 0)}):Play()
 		
 	end
 	
