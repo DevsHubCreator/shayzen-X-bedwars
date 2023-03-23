@@ -294,7 +294,7 @@ function library:Create()
 				dropdown_open = not dropdown_open;
 				local dropdown_size = dropdown_open and dropYsize or not dropdown_open and 0
 				
-				ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 201, 0, dropdown_size)}):Play()
+				ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
 				
 				for i,v in pairs(Frame:GetChildren()) do
 					if v:IsA("GuiObject") then
@@ -491,6 +491,7 @@ function library:Create()
 				Table.Position = UDim2.new(0, 0, 1, 0)
 				Table.Size = UDim2.new(0, 220, 0, 0)
 				Table.ZIndex = 6
+				Table.Visible = false
 
 				UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(193, 183, 232)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(56, 41, 108))}
 				UIGradient.Parent = Table
@@ -553,12 +554,14 @@ function library:Create()
 				
 				Dropdown.MouseButton1Click:Connect(function()
 					dropdown_db = not dropdown_db;
+					Table.Visible = dropdown_db
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 				end)
 				
 				Dropdown.MouseButton2Click:Connect(function()
 					dropdown_db = not dropdown_db;
+					Table.Visible = dropdown_db
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 				end)
@@ -896,7 +899,7 @@ local killaura = page1:CreateButton("Killaura",function(x)
 end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
-end)453
+end)53
 
 ]]
 
