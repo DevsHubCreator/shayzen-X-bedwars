@@ -311,38 +311,36 @@ function library:Create()
 				onButton = false;
 			end)
 			
-			uis.InputBegan:Connect(function(input,display)
+			uis.InputBegan:Connect(function(input, display)
 				if input.UserInputType == Enum.UserInputType.MouseButton3 then
-					if onButton and not display then
+					if onButton then
 						waitingKey = true;
 						TextLabel.Text = "Waiting for key"
 					end
 				elseif input.UserInputType == Enum.UserInputType.Keyboard then
-					if not display then
-						if input.KeyCode == Enum.KeyCode.Backspace then
-							if waitingKey then
-								keybind = "none"
-								waitingKey = false;
-
-								TextLabel.Text = name
-							end
-						end
-
-						if keybind ~= "none" and not waitingKey then
-							if input.KeyCode == keybind then
-								toggle_enabled = not toggle_enabled;
-								local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
-
-								ts:Create(TextLabel, TweenInfo.new(.3), {TextColor3 = text_color}):Play()
-								callback(toggle_enabled)
-							end
-						end
-
+					if input.KeyCode == Enum.KeyCode.Backspace then
 						if waitingKey then
-							keybind = input.KeyCode
+							keybind = "none"
 							waitingKey = false;
+
 							TextLabel.Text = name
 						end
+					end
+
+					if keybind ~= "none" and not waitingKey and not display then
+						if input.KeyCode == keybind then
+							toggle_enabled = not toggle_enabled;
+							local text_color = toggle_enabled and Color3.fromRGB(117, 188, 255) or not toggle_enabled and Color3.fromRGB(226, 226, 226)
+
+							ts:Create(TextLabel, TweenInfo.new(.3), {TextColor3 = text_color}):Play()
+							callback(toggle_enabled)
+						end
+					end
+
+					if waitingKey then
+						keybind = input.KeyCode
+						waitingKey = false;
+						TextLabel.Text = name
 					end
 				end
 			end)
@@ -912,7 +910,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-awesome
+
 ]]
 
 
