@@ -546,7 +546,7 @@ function library:Create()
 					TextLabel_3.TextStrokeColor3 = Color3.fromRGB(50, 50, 50)
 					TextLabel_3.TextWrapped = true
 					
-					dropdownYsize += 29
+					dropdownYsize += 28
 					
 					TextButton.MouseButton1Click:Connect(function()
 						TextLabel_2.Text = tostring(v)
@@ -562,9 +562,9 @@ function library:Create()
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 					
-					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and 0
+					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and dropYsize
 
-					ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
+					ts:Create(Frame, TweenInfo.new(.2), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
 				end)
 				
 				Dropdown.MouseButton2Click:Connect(function()
@@ -573,9 +573,9 @@ function library:Create()
 					local isSize = dropdown_db and UDim2.new(0, 220, 0, dropdownYsize) or not dropdown_db and UDim2.new(0, 220, 0, 0)
 					ts:Create(Table, TweenInfo.new(.2), {Size = isSize}):Play()
 					
-					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and 0
+					local dropdown_size = dropdown_open and dropYsize + dropdownYsize or not dropdown_open and dropYsize
 
-					ts:Create(Frame, TweenInfo.new(.05), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
+					ts:Create(Frame, TweenInfo.new(.2), {Size = UDim2.new(0, 220, 0, dropdown_size)}):Play()
 				end)
 			end
 			
@@ -912,7 +912,7 @@ end)
 killaura:CreateToggle("Client rotation",function(x)
 	print(x)
 end)
-10/10
+hella good
 ]]
 
 
