@@ -760,8 +760,8 @@ function library:Create()
 				
 				function options:ChangeProprs(name, sync, health, maxHealth)
 					name = name or "...";
-					health = math.round(health) or 100
-					maxHealth = math.round(maxHealth) or 100
+					health = tonumber(math.round(health)) or 100
+					maxHealth = tonumber(math.round(maxHealth)) or 100
 					
 					TargetHUD.Visible = sync;
 					
@@ -769,13 +769,7 @@ function library:Create()
 						Name.Text = tostring(name)
 						Health.Text = tostring(health)
 
-						if health < 5 then
-							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, 0, 0, 12)}):Play()
-							ts:Create(Line,TweenInfo.new(0.25, Enum.EasingStyle.Quad),{Transparency = 1}):Play()
-						else
-							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Transparency = 0}):Play()
-							ts:Create(Line,TweenInfo.new(0.15, Enum.EasingStyle.Quad),{Size = UDim2.new(0, health / maxHealth, 0, 12)}):Play()
-						end
+						ts:Create(Line,TweenInfo.new(0.15),{Size = UDim2.new(0, health / maxHealth, 0, 12)}):Play()
 					end
 				end
 				
@@ -815,9 +809,6 @@ function library:Create()
 		
 		Watermark.Active = true;
 		Watermark.Draggable = true;
-		
-		Watermark.Position = UDim2.new(0.0140000004, 0,0.127, 0)
-		Watermark["text"].TextTransparency = 1
 
 		wait(0.5)
 		ts:Create(Watermark, TweenInfo.new(1.25, Enum.EasingStyle.Quad), {Position = UDim2.new(-0.00670645386, 0, -0.0649546683, 0)}):Play()
