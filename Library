@@ -58,7 +58,7 @@ function library:Create()
 	local clickGui_enabled = false;
 	
 	uis.InputBegan:Connect(function(key)
-		if key.KeyCode == Enum.KeyCode.RightControl then
+		if key.KeyCode == Enum.KeyCode.RightShift then
 			clickGui_enabled = not clickGui_enabled;
 			if clickGui_enabled then
 				TextButton.Visible = true
